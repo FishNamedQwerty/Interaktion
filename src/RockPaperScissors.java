@@ -2,6 +2,8 @@ import java.util.Scanner;
 import java.util.Random;
 
 public class RockPaperScissors {
+    static int computerScore = 0;
+    static int playerScore = 0;
 
     public static void runGame() {
         int computerInput = letComputerChoose();
@@ -13,20 +15,25 @@ public class RockPaperScissors {
 
     public static void checkResults(int computerInput, int userInput) {
 
+
         if (computerInput == userInput) {
             System.out.println("Draw!");
         } else if (computerInput == 1 && userInput == 2
                 || computerInput == 2 && userInput == 3
                 || computerInput == 3 && userInput == 1) {
+            playerScore = playerScore + 1;
             System.out.println("You win!");
 
         } else if (computerInput == 2 && userInput == 1
                 || computerInput == 3 && userInput == 2
                 || computerInput == 1 && userInput == 3) {
+            computerScore = computerScore + 1;
             System.out.println("Computer wins!");
+
         } else {
             System.out.println("Incorrect inputs: round void");
         }
+        System.out.println("The score is: " + playerScore + ":" + computerScore);
     }
 
     private static String convertToWordUser(int userInput) {
@@ -70,7 +77,8 @@ public class RockPaperScissors {
 
     public static int letComputerChoose() {
         Random rgen = new Random();
-        int computerInput = rgen.nextInt(1, 3);
+        int computerInput = rgen.nextInt(1,3);
         return computerInput;
     }
+
 }
